@@ -17,7 +17,23 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
 import os
-import time
 
-time.sleep(5)
-os.system('sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 5050')
+
+def initialize():
+    global SETTING, GLOW, SPEECH, STOP_THREAD
+    SETTING = []
+    GLOW = False
+    SPEECH = 0
+    STOP_THREAD = False
+
+    global ROOT_PATH, KEYWORD_PATH, NOISE_PATH, SETTINGS_PATH
+
+    # absolute file paths
+    ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
+    KEYWORD_PATH = os.environ.get(
+        "PROJECT_ALIAS_KEYWORD", os.path.join(ROOT_PATH, "../data/keyphrase.list")
+    )
+    NOISE_PATH = os.path.join(ROOT_PATH, "../data/noise.wav")
+    SETTINGS_PATH = os.environ.get(
+        "PROJECT_ALIAS_SETTINGS", os.path.join(ROOT_PATH, "../data/settings.txt")
+    )
