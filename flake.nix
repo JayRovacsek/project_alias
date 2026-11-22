@@ -74,8 +74,10 @@
         checks = lib.getAttrs [ system ] self.checks;
       };
 
+      # The pre-commit runner is intentionally not exposed as a check: it
+      # executes every hook at build time, which duplicates the individual
+      # checks below. Its value is the devshell startup hook only.
       checks.${system} = {
-        pre-commit-check = pre-commit;
         ruff-check = pkgs.runCommand "check-ruff" { buildInputs = [ pkgs.ruff ]; } ''
           ${pkgs.ruff}/bin/ruff check --no-cache ${lintSrc}
           touch $out
