@@ -35,7 +35,6 @@
         root = ./.;
         fileset = lib.fileset.difference (lib.fileset.unions [
           ./src/app.py
-          ./src/sleep.py
           ./src/modules
           ./data
           ./imgs
@@ -51,7 +50,6 @@
         root = ./.;
         fileset = lib.fileset.unions [
           ./src/app.py
-          ./src/sleep.py
           ./src/modules
           ./nix
           ./.github
