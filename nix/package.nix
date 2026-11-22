@@ -6,7 +6,9 @@
 
 let
   # Single interpreter bundling every runtime dependency the app imports.
-  python = pkgs.python3.withPackages (
+  # Pinned to 3.13: tensorflow's dependency chain (google-pasta) is broken
+  # on nixpkgs' default python3 (3.14).
+  python = pkgs.python313.withPackages (
     ps: with ps; [
       flask
       flask-socketio
