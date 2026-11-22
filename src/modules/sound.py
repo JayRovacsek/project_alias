@@ -79,10 +79,6 @@ class audioPlayer:
         self.filepath = os.path.abspath(filepath)
         self.player = mixer.Sound(file=self.filepath)
 
-    def check_if_playing(self):
-        while mixer.get_busy():
-            pass
-
     def play(self):
         print("play noise")
         self.player.play(loops=-1)
