@@ -90,6 +90,10 @@ in
         Group = "project-alias";
         StateDirectory = "project-alias";
         ConfigurationDirectory = "project-alias";
+        Environment = [
+          "PROJECT_ALIAS_SETTINGS=${cfg.configDir}/settings.txt"
+          "PROJECT_ALIAS_KEYWORD=${cfg.dataDir}/keyphrase.list"
+        ];
         NoNewPrivileges = true;
         CapabilityBoundingSet = "";
         AmbientCapabilities = "";

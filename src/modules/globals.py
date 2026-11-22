@@ -42,6 +42,10 @@ def initialize():
 
     # absolute file paths
     ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
-    KEYWORD_PATH = os.path.join(ROOT_PATH, "../data/keyphrase.list")
+    KEYWORD_PATH = os.environ.get(
+        "PROJECT_ALIAS_KEYWORD", os.path.join(ROOT_PATH, "../data/keyphrase.list")
+    )
     NOISE_PATH = os.path.join(ROOT_PATH, "../data/noise.wav")
-    SETTINGS_PATH = os.path.join(ROOT_PATH, "../data/settings.txt")
+    SETTINGS_PATH = os.environ.get(
+        "PROJECT_ALIAS_SETTINGS", os.path.join(ROOT_PATH, "../data/settings.txt")
+    )
