@@ -18,6 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 # Audio
 import os
+import subprocess
 
 from modules import globals, settings
 from pygame import mixer
@@ -61,8 +62,7 @@ def speak(txt):
         if lan[0] == lang:
             lang = lan[1]
 
-    cmd = "espeak " + lang + gender + ' "' + txt + '"'
-    os.system(cmd)
+    subprocess.run(["espeak", lang, gender, txt], check=False)
 
 
 def setVolume():
