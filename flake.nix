@@ -117,6 +117,12 @@
         devshell.startup.pre-commit.text = pre-commit.shellHook;
       };
 
+      # Kept out of checks so the CI matrix stays lint-only; run with
+      # nix build .#tests.x86_64-linux.basic (requires a kvm-capable host).
+      tests.${system}.basic = import ./tests/basic.nix {
+        inherit self pkgs;
+      };
+
       packages.aarch64-linux = {
         project-alias = import ./nix/package.nix {
           inherit lib src;
