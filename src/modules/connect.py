@@ -1,5 +1,6 @@
 # Socket I/O
 import logging
+import os
 
 from flask import Flask, render_template
 from flask_socketio import SocketIO
@@ -7,7 +8,7 @@ from modules import settings
 
 # Socket I/O
 # ====================================================#
-PORT = 5050
+PORT = int(os.environ.get("PORT", "5050"))
 HOST = "0.0.0.0"
 app = Flask(__name__)
 app.debug = False

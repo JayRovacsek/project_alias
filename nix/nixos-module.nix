@@ -93,6 +93,7 @@ in
         Environment = [
           "PROJECT_ALIAS_SETTINGS=${cfg.configDir}/settings.txt"
           "PROJECT_ALIAS_KEYWORD=${cfg.dataDir}/keyphrase.list"
+          "PORT=${toString cfg.port}"
         ];
         NoNewPrivileges = true;
         CapabilityBoundingSet = "";
