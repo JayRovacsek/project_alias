@@ -1,14 +1,14 @@
 {
   lib,
-  pkgs,
+  python3Packages,
   src,
 }:
 
 let
-  # Single interpreter bundling every runtime dependency the app imports.
-  # Pinned to 3.13: tensorflow's dependency chain (google-pasta) is broken
-  # on nixpkgs' default python3 (3.14).
-  python = pkgs.python313.withPackages (
+  # Single interpreter bundling every runtime dependency the app imports;
+  # the interpreter choice (3.13, as tensorflow is bin-only and broken on
+  # 3.14) lives in the flake, not here.
+  python = python3Packages.python.withPackages (
     ps: with ps; [
       flask
       flask-socketio
@@ -20,12 +20,12 @@ let
     ]
   );
 in
-pkgs.stdenvNoCC.mkDerivation {
+python3Packages.stdenvNoCC.mkDerivation {
   pname = "project-alias";
   version = "2.0";
   inherit src;
 
-  nativeBuildInputs = [ pkgs.makeWrapper ];
+  nativeBuildInputs = [ python3Packages.makeWrapper ];
 
   dontUnpack = true;
   dontConfigure = true;
@@ -41,8 +41,8 @@ pkgs.stdenvNoCC.mkDerivation {
       --add-flags "$out/share/project-alias/app.py" \
       --prefix PATH : ${
         lib.makeBinPath [
-          pkgs.espeak-ng
-          pkgs.alsa-utils
+          python3Packages.espeak-ng
+          python3Packages.alsa-utils
         ]
       }
 
