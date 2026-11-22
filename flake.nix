@@ -34,9 +34,9 @@
       src = lib.fileset.toSource {
         root = ./.;
         fileset = lib.fileset.difference (lib.fileset.unions [
-          ./app.py
-          ./sleep.py
-          ./modules
+          ./src/app.py
+          ./src/sleep.py
+          ./src/modules
           ./data
           ./imgs
           ./nix
@@ -44,15 +44,15 @@
           ./flake.nix
           ./flake.lock
           ./LICENSE.GPL
-        ]) ./modules/__pycache__;
+        ]) ./src/modules/__pycache__;
       };
 
       lintSrc = lib.fileset.toSource {
         root = ./.;
         fileset = lib.fileset.unions [
-          ./app.py
-          ./sleep.py
-          ./modules
+          ./src/app.py
+          ./src/sleep.py
+          ./src/modules
           ./nix
           ./.github
           ./flake.nix

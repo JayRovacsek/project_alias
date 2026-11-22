@@ -35,7 +35,7 @@ python3Packages.stdenvNoCC.mkDerivation {
     runHook preInstall
 
     mkdir -p $out/share/project-alias $out/bin
-    cp -r ${src}/app.py ${src}/modules ${src}/data ${src}/imgs ${src}/LICENSE.GPL $out/share/project-alias
+    cp -r ${src}/src/app.py ${src}/src/modules ${src}/data ${src}/imgs ${src}/LICENSE.GPL $out/share/project-alias
 
     makeWrapper ${python}/bin/python3 $out/bin/project-alias \
       --add-flags "$out/share/project-alias/app.py" \
