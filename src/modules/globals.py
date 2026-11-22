@@ -20,22 +20,10 @@ import os
 
 
 def initialize():
-    global \
-        SETTING, \
-        RESET, \
-        SILENCE, \
-        TRIGGERED, \
-        GLOW, \
-        SPEECH, \
-        CONFIG_HAS_CHANGED, \
-        STOP_THREAD
+    global SETTING, GLOW, SPEECH, STOP_THREAD
     SETTING = []
-    RESET = False
-    SILENCE = False
-    TRIGGERED = False
     GLOW = False
     SPEECH = 0
-    CONFIG_HAS_CHANGED = False
     STOP_THREAD = False
 
     global ROOT_PATH, KEYWORD_PATH, NOISE_PATH, SETTINGS_PATH
