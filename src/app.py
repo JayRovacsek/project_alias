@@ -19,7 +19,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # coding=utf-8
 import atexit
 import ctypes
-import os
 import signal
 import threading
 import time
@@ -219,7 +218,6 @@ def exit_handler():
     led.LED.off()
     connect.socketio.stop()
     sound.mixer.stop()
-    os.system("ps -fA | grep python")
 
 
 signal.signal(signal.SIGINT, exit_handler)
